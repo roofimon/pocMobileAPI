@@ -1,4 +1,4 @@
-package th.co.dtac.mobile.rtr.th.co.dtac.mobile.rtr.model;
+package th.co.dtac.mobile.rtr.domain;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
