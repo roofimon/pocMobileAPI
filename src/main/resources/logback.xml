@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+
+    <!-- To enable JMX Management -->
+    <jmxConfigurator/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder
+            by default -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <appender name="db" class="ch.qos.logback.classic.db.DBAppender">
+        <connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">
+            <driverClass>com.mysql.jdbc.Driver</driverClass>
+            <url>jdbc:mysql://localhost:3306/logback</url>
+            <user>root</user>
+            <password>root</password>
+        </connectionSource>
+        <!--<sqlDialect class="ch.qos.logback.core.db.dialect.MySQLDialect" />-->
+    </appender>
+
+
+    <appender name="db-pool" class="ch.qos.logback.classic.db.DBAppender">
+        <connectionSource class="ch.qos.logback.core.db.DataSourceConnectionSource">
+            <!--<dataSource class="com.mysql.jdbc.jdbc2.optional.MysqlDataSource">
+                <serverName>${serverName}</serverName>
+                <port>${port$</port>
+                <databaseName>${dbName}</databaseName>
+                <user>${user}</user>
+                <password>${pass}</password>
+            </dataSource>-->
+
+            <dataSource class="com.mysql.jdbc.jdbc2.optional.MysqlDataSource">
+                <serverName>localhost</serverName>
+                <port>3306</port>
+                <databaseName>logback</databaseName>
+                <user>root</user>
+                <password>root</password>
+            </dataSource>
+        </connectionSource>
+    </appender>
+
+
+
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${user.dir}/logs/app.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${user.dir}/logs/app.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%.-1level|%-40.40logger{0}|%msg%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%.-1level|%-40.40logger{0}|%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="th.co.dtac.mobile.rtr" level="debug"/>
+
+
+    <logger name="org.hibernate.SQL" additivity="false">
+        <level value="INFO" />
+        <!-- <appender-ref ref="FILE" /> -->
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <logger name="org.hibernate.type" additivity="false">
+        <!-- <level value="TRACE" /> -->
+        <level value="TRACE" />
+        <!-- <appender-ref ref="FILE" /> -->
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+
+    <root level="info">
+        <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
+        <appender-ref ref="db-pool"/>
+    </root>
+</configuration>
