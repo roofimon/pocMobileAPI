@@ -22,10 +22,13 @@
         </encoder>
     </appender>
 
-    <logger name="th.co.dtac.mobile.rtr" level="debug"/>
-
-    <root level="info">
+    <logger name="th.co.dtac.mobile.rtr" level="DEBUG">
         <appender-ref ref="file"/>
+    </logger>
+    <logger name="th.co.dtac.mobile.rtr.Application" level="WARN">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <root level="OFF">
         <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
