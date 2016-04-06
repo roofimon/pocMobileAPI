@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <configuration>
     <contextName>${HOSTNAME}</contextName>
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <Pattern>
-                <!--%X{clientName}, [%thread], %-5level %logger{36} - %msg%n-->
-                <!--%highlight(%-5level) %cyan(%logger{15}) | %X{requestId}| | %d{HH:mm:ss.SSS} | %logger{36} [%file:%M:%line] - %msg%n-->
-                <!--%contextName | %X{client} | %X{requestId}| | %d{HH:mm:ss.SSS} | %logger{36} [%file:%M:%line] - %msg%n-->
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${user.dir}/logs/app.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${user.dir}/logs/app.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>
                 %contextName | %X{client} | %X{requestId}| | %d{dd-MMM-yyyy HH:mm:ss Z} | %X{requestURL} | %logger{36} [%file:%M:%line] | %msg%n
-            </Pattern>
+            </pattern>
         </encoder>
     </appender>
 
     <logger name="th.co.dtac.mobile.rtr" level="debug"/>
 
     <root level="info">
-        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="file"/>
     </root>
 </configuration>
