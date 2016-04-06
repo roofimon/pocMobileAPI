@@ -9,5 +9,5 @@ import java.util.List;
  * Created by roofimon on 4/4/2016 AD.
  */
 public interface ProductRepository extends CrudRepository<Product, Long> {
-    List<Product> findByProductName(String productName);
+    List<Product> findByDescription(String description);
 }
