@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <configuration>
+    <property name="RTR_LOG_PATTERN" value="%contextName | %X{client} | %X{requestId}| | %d{dd-MMM-yyyy HH:mm:ss Z} | %X{requestURL} | %logger{36} [%file:%M:%line] | %msg%n"/>
+
     <contextName>${HOSTNAME}</contextName>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>${RTR_LOG_PATTERN}</Pattern>
+        </encoder>
+    </appender>
 
     <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${user.dir}/logs/app.log</file>
@@ -10,9 +18,7 @@
         </rollingPolicy>
 
         <encoder>
-            <pattern>
-                %contextName | %X{client} | %X{requestId}| | %d{dd-MMM-yyyy HH:mm:ss Z} | %X{requestURL} | %logger{36} [%file:%M:%line] | %msg%n
-            </pattern>
+            <pattern>${RTR_LOG_PATTERN}</pattern>
         </encoder>
     </appender>
 
@@ -20,5 +26,6 @@
 
     <root level="info">
         <appender-ref ref="file"/>
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
