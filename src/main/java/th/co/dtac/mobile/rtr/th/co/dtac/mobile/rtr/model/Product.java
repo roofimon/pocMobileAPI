@@ -19,6 +19,7 @@ public class Product {
     private String description;
     private String imageUrl;
     private BigDecimal price;
+
     public Integer getVersion() {
         return version;
     }
