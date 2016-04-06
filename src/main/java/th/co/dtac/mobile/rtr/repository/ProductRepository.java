@@ -1,7 +1,7 @@
 package th.co.dtac.mobile.rtr.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import th.co.dtac.mobile.rtr.th.co.dtac.mobile.rtr.model.Product;
+import th.co.dtac.mobile.rtr.domain.Product;
 
 import java.util.List;
 
