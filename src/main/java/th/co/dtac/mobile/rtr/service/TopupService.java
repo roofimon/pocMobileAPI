@@ -11,11 +11,15 @@ import org.springframework.stereotype.Service;
 public class TopupService {
 
     private static Logger LOGGER = LoggerFactory.getLogger(TopupService.class);
-    public boolean callTopupService() {
+    public boolean callTopupService(String code) {
 
         LOGGER.info("2");
         System.out.println("call real service");
         LOGGER.info("3");
+
+        if (!"0".equals(code)) {
+            throw new RuntimeException("> Third Part Error");
+        }
         return true;
     }
 

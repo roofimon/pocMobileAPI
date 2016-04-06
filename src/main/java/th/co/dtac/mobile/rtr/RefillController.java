@@ -3,10 +3,7 @@ package th.co.dtac.mobile.rtr;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import th.co.dtac.mobile.rtr.service.TopupService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,16 +29,21 @@ public class RefillController {
 
         return "success";
     }
-    @RequestMapping(value = "/topup", method = RequestMethod.GET)
-    public String topup() {
+    @RequestMapping(value = "/topup/{code}", method = RequestMethod.GET)
+    public String topup(@PathVariable String code) {
 
         LOGGER.info("1 ");
 
-        //call third party
-        topupService.callTopupService();
+        try {
+            //call third party
+            topupService.callTopupService(code);
 
 
-        LOGGER.info("4");
+            LOGGER.info("4");
+        } catch (Exception e) {
+            LOGGER.info("5");
+            return "failure";
+        }
 
         return "success";
     }
