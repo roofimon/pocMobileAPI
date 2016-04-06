@@ -8,14 +8,15 @@
     <!-- To enable JMX Management -->
     <jmxConfigurator/>
 
+<!--
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder
-            by default -->
+        &lt;!&ndash; encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder
+            by default &ndash;&gt;
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
             </pattern>
         </encoder>
-    </appender>
+    </appender>-->
 
     <appender name="db" class="ch.qos.logback.classic.db.DBAppender">
         <connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">
@@ -62,32 +63,26 @@
         </encoder>
     </appender>
 
+    <contextName>${HOSTNAME}</contextName>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 
-    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>%.-1level|%-40.40logger{0}|%msg%n</pattern>
+
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                <!--%X{clientName}, [%thread], %-5level %logger{36} - %msg%n-->
+                <!--%highlight(%-5level) %cyan(%logger{15}) | %X{requestId}| | %d{HH:mm:ss.SSS} | %logger{36} [%file:%M:%line] - %msg%n-->
+                <!--%contextName | %X{client} | %X{requestId}| | %d{HH:mm:ss.SSS} | %logger{36} [%file:%M:%line] - %msg%n-->
+                %contextName | %X{client} | %X{requestId}| | %d{dd-MMM-yyyy HH:mm:ss Z} | %X{requestURL} | %logger{36} [%file:%M:%line] | %msg%n
+            </Pattern>
         </encoder>
+
+
     </appender>
 
     <logger name="th.co.dtac.mobile.rtr" level="debug"/>
 
-
-    <logger name="org.hibernate.SQL" additivity="false">
-        <level value="INFO" />
-        <!-- <appender-ref ref="FILE" /> -->
-        <appender-ref ref="STDOUT" />
-    </logger>
-
-    <logger name="org.hibernate.type" additivity="false">
-        <!-- <level value="TRACE" /> -->
-        <level value="TRACE" />
-        <!-- <appender-ref ref="FILE" /> -->
-        <appender-ref ref="STDOUT" />
-    </logger>
-
-
     <root level="info">
-        <appender-ref ref="console"/>
+        <appender-ref ref="STDOUT"/>
         <appender-ref ref="file"/>
         <appender-ref ref="db-pool"/>
     </root>
