@@ -1,13 +1,13 @@
-package th.co.dtac.mobile.rtr;
+package th.co.dtac.mobile.rtr.web.api;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import th.co.dtac.mobile.rtr.service.TopupService;
+import th.co.dtac.mobile.rtr.web.model.TopupParam;
 
 import javax.servlet.http.HttpServletRequest;
-import java.math.BigDecimal;
 
 /**
  * Created by amanurat on 4/6/2016 AD.
@@ -50,27 +50,4 @@ public class RefillController {
 
 
 
-}
-class TopupParam {
-    private String subscriberNumber;
-    private BigDecimal amount;
-
-    public TopupParam() {
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
-
-    public String getSubscriberNumber() {
-        return subscriberNumber;
-    }
-
-    public void setSubscriberNumber(String subscriberNumber) {
-        this.subscriberNumber = subscriberNumber;
-    }
 }
