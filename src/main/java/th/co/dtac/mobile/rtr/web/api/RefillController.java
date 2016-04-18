@@ -9,6 +9,9 @@ import th.co.dtac.mobile.rtr.web.model.TopupParam;
 
 import javax.servlet.http.HttpServletRequest;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
 /**
  * Created by amanurat on 4/6/2016 AD.
  */
@@ -20,16 +23,16 @@ public class RefillController {
 
 
     @Autowired
-    TopupService topupService;
+    private TopupService topupService;
 
-    @RequestMapping(value = "/topup", method = RequestMethod.POST)
+    @RequestMapping(value = "/topup", method = POST)
     public String topup(@RequestBody TopupParam topupParam, HttpServletRequest request) {
 
         LOGGER.info("Remote Addr : "+request.getRemoteAddr());
 
         return "success";
     }
-    @RequestMapping(value = "/topup/{code}", method = RequestMethod.GET)
+    @RequestMapping(value = "/topup/{code}", method = GET)
     public String topup(@PathVariable String code) {
 
         LOGGER.info("1 ");
