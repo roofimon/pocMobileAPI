@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <configuration>
-    <property name="RTR_LOG_PATTERN" value="%contextName | %X{client} | %X{requestId}| | %d{dd-MMM-yyyy HH:mm:ss Z} | %X{requestURL} | %logger{36} [%file:%M:%line] | %msg%n"/>
+    <jmxConfigurator/>
+
+    <property name="RTR_LOG_PATTERN" value="%contextName | %X{client} | %X{requestId}| %d{dd-MMM-yyyy HH:mm:ss Z} | %X{requestURL} | %logger{36} [%file:%M:%line] | %msg%n"/>
 
     <contextName>${HOSTNAME}</contextName>
 
