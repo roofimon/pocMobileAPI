@@ -1,0 +1,25 @@
+info:
+#  version: @pom.version@
+  stage: test
+
+logging:
+  file: target/boot-admin-sample.log
+
+
+spring:
+  application:
+     name: mobile-rtr
+  profiles:
+    active: dev
+  boot:
+    admin:
+      url: http://localhost:8080
+  cloud:
+    config:
+      enabled: false
+
+endpoints:
+  health:
+    sensitive: false
+management:
+  context-path: /manage
