@@ -11,7 +11,7 @@ public class MainController {
 
     private static Logger LOGGER = LoggerFactory.getLogger(MainController.class);
 
-    @RequestMapping("/home")
+    @RequestMapping("/")
     public String index() {
 
         LOGGER.debug("> Greetings Mobile RTR from Spring Boot on path '/' ");
