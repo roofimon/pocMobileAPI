@@ -31,7 +31,7 @@
     <logger name="th.co.dtac.mobile.rtr.Application" level="WARN">
         <appender-ref ref="STDOUT"/>
     </logger>
-    <root level="INFO">
+    <root level="OFF">
         <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
