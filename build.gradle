@@ -39,13 +39,12 @@ dependencies {
     // end:: database[]
 
     // tag:: logging[]
-    compile("org.apache.logging.log4j:log4j-api:2.5")
-    compile("org.apache.logging.log4j:log4j-core:2.5")
+
     // end:: logging[]
 
 
     // tag::actuator[]
-    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.boot:spring-boot-starterß-actuator")
 
     compile('de.codecentric:spring-boot-admin-server:1.3.2')
     compile('de.codecentric:spring-boot-admin-server-ui:1.3.2')
