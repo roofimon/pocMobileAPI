@@ -26,7 +26,6 @@
 
     <logger name="th.co.dtac.mobile.rtr" level="DEBUG">
         <appender-ref ref="file"/>
-        <appender-ref ref="STDOUT"/>
     </logger>
     <logger name="th.co.dtac.mobile.rtr.Application" level="WARN">
         <appender-ref ref="STDOUT"/>
