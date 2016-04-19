@@ -1,14 +1,22 @@
-info:
-#  version: @pom.version@
-  stage: test
+info :
+#   id : spring-boot-admin
+#   version : @project.version@
+   stage : test
+   build :
+#      artifact : @project.artifactId@
+#      name : @project.name@
+#      description : @project.description@
+#      version : @project.version@
+
 
 logging:
-  file: target/boot-admin-sample.log
-
+  file: logs/app.log
 
 spring:
   application:
      name: mobile-rtr
+     admin:
+       enabled: true
   profiles:
     active: dev
   boot:
@@ -18,8 +26,12 @@ spring:
     config:
       enabled: false
 
-endpoints:
-  health:
-    sensitive: false
+endpoints :
+    health :
+        sensitive : false
+    logfile :
+      enabled : true
+      sensitive : false
+
 management:
   context-path: /manage
