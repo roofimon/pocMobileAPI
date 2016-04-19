@@ -44,7 +44,7 @@ dependencies {
 
 
     // tag::actuator[]
-    compile("org.springframework.boot:spring-boot-starterß-actuator")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
 
     compile('de.codecentric:spring-boot-admin-server:1.3.2')
     compile('de.codecentric:spring-boot-admin-server-ui:1.3.2')
